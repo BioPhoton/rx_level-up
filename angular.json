@@ -26,7 +26,7 @@
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -78,7 +78,7 @@
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -129,5 +129,15 @@
       }
     }
   },
-  "defaultProject": "ng-material"
+  "defaultProject": "ng-material",
+  "schematics": {
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "prefix": "mh",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directives": {
+      "prefix": "mh"
+    }
+  }
 }
