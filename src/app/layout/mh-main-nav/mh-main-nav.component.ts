@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'mh-main-nav',
   templateUrl: './mh-main-nav.component.html',
-  styleUrls: ['./mh-main-nav.component.css']
+  styleUrls: ['./mh-main-nav.component.scss']
 })
 export class MhMainNavComponent {
 
