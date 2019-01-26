@@ -1,11 +1,24 @@
 import {LayoutModule} from '@angular/cdk/layout';
 import {NgModule} from '@angular/core';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatGridListModule
+} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 import {AppComponent} from './app.component';
 import {AppLayoutModule} from './layout/layout.module';
-import {MatCardModule} from '@angular/material';
+import {ApiModule} from './api/api.module';
+
+export const MATERIAL_MODULES = [
+  LayoutModule,
+  MatCardModule,
+  MatButtonModule,
+  MatGridListModule
+];
 
 @NgModule({
   declarations: [
@@ -14,12 +27,14 @@ import {MatCardModule} from '@angular/material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    LayoutModule,
-    MatCardModule,
-    AppLayoutModule
+    MATERIAL_MODULES,
+    FontAwesomeModule,
+    AppLayoutModule,
+    ApiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

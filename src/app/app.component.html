@@ -1,5 +1,101 @@
 <mh-main-nav [title]="'Rx Workshop'">
-  <section class="cover-image">
-    <img class="material-image" src="assets/images/main-page__header.jpg">
-  </section>
+  <div nav-items>
+    <button mat-button>Basic</button>
+    <button mat-button>Advanced</button>
+  </div>
+  <div main class="rx-main-row">
+    <header class="rx-header-background filter-wrapper">
+      <div class="rx-header-section color-filter filter-primary-gradient"></div>
+      <div class="r">
+        <div class="rx-header-headline filter-content">
+
+          <img class="full-width-img" src="assets/images/RxJS-logo.png"
+            style="width: 230px; float: right;">
+          <h1>
+            Rx Level Up
+          </h1>
+          <p>
+            Trainings which bring your reactive programming skills to the next
+            level.<br>
+            Workshops for every level to master RxJS in your applications.
+          </p>
+
+          <button mat-raised-button color="secondary">
+            Book in-house
+          </button>
+        </div>
+      </div>
+    </header>
+    <section class="rx-content content-row r">
+      <mat-card>
+        <mat-card-content>
+          <h4 class="description text-center">
+            Get hands on knowledge on RxJS, one of <br>
+            the most powerful libraries in reactive programming. <br>
+            Learn form certified experts, get hands on training.
+          </h4>
+        </mat-card-content>
+        <mat-card-content>
+          <mat-grid-list cols="3">
+            <mat-grid-tile *ngFor="let quote of quotes">
+              <mat-card class="flat-mat-card col-mat-card quote">
+                <mat-card-content class="text-center">
+                  <img class="context-image" [src]="quote.contextImage">
+                </mat-card-content>
+                <mat-card-content class="text">{{quote.text}}
+                </mat-card-content>
+                <mat-card-content>{{quote.author}}</mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
+        <div class="card-background background-dark">
+          <mat-grid-list cols="2" rowHeight="380">
+            <mat-grid-tile
+              *ngFor="let workshop of workshops">
+              <mat-card class="flat-mat-card col-mat-card">
+                <img mat-card-image alt="{{workshop.title}}"
+                  [src]="workshop.coverImage"/>
+                <mat-card-actions>
+                  <button mat-raised-button color="primary">
+                    Details
+                  </button>
+                  <button mat-raised-button color="secondary">
+                    Book In-House
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        <div class="card-background background-light">
+          <mat-grid-list cols="3">
+            <mat-grid-tile>
+              <h1>Test</h1>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <h1>Test</h1>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <h1>Test</h1>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </mat-card>
+
+    </section>
+    <footer class="rx-footer-background background-darker">
+      <mat-grid-list cols="3" rowHeight="250px">
+        <mat-grid-tile>
+          <h1>Test</h1>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <h1>Test</h1>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <h1>Test</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </footer>
+  </div>
 </mh-main-nav>

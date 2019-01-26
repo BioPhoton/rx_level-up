@@ -1,0 +1,45 @@
+@mixin theme-rx-dark($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-root {
+    .color-filter.filter-primary-gradient {
+      background: linear-gradient(135deg,mat-color($primary, darker, 0.80), mat-color($primary, lighter, 0.30));
+    }
+
+    .rx-header-background {
+      background: mat-color($primary);
+    }
+
+    .rx-header-headline {
+      color: mat-color($primary, default-contrast);
+    }
+
+    .rx-main-row {
+      color: mat-color($foreground, secondary-text);
+    }
+
+    .background-dark {
+      background: mat-color($primary);
+      color: mat-color($primary, default-contrast);
+    }
+
+    .background-darker {
+      background: mat-color($primary, 300);
+      color: mat-color($primary, default-contrast);
+    }
+
+    .background-light {
+      background: mat-color($primary, default-contrast);
+      color: mat-color($primary);
+    }
+
+    h4.description {
+      color: mat-color($primary, darker);
+    }
+
+  }
+}

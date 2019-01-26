@@ -1,5 +1,55 @@
-.cover-image {
-  .material-image {
-    width:100%;
+@import "./layout/_theme_rx-dark.scss";
+
+.mat-card {
+  overflow: hidden;
+}
+
+.r {
+  width: 950px;
+  margin: 0 auto;
+}
+
+.rx-header-background {
+  margin-top: -64px;
+  height: 620px;
+  overflow: hidden;
+  background-position: 330px center;
+  background-size: cover;
+  background-image: url(/assets/images/main-page__header.jpg);
+
+  .rx-header-headline {
+    margin: 60px;
+    margin-top: 160px;
+    font-size: 180%;
   }
+
+}
+
+.rx-content {
+  margin-top: -60px;
+  margin-bottom: -60px;
+
+  h4.description {
+    margin: 50px 0px 20px;
+    font-size: 150%;
+    line-height: 150%;
+  }
+
+  .quote {
+    min-height: 200px;
+    text-align: center;
+
+    .context-image {
+      height: 40px;
+      width: auto;
+    }
+
+    .text {
+      min-height: 60px;
+    }
+  }
+}
+
+.rx-footer-background {
+  height: 300px;
 }
