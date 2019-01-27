@@ -59,7 +59,7 @@ export class AppComponent {
   ];
 
   constructor(private dS: ApiService) {
-    this.dS.getData().subscribe(console.log);
+    this.dS.getWorkshops().subscribe(console.log);
   }
 
 }
