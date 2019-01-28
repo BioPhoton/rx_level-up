@@ -1,9 +1,16 @@
+## <small>0.0.4 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.3 (2019-01-28)</small>
 
+* chore(release): 0.0.3 (patch) ([5c52dc7](https://github.com/BioPhoton/rx_level-up/commit/5c52dc7))
 * chore(setup CI): progress ([8b3795c](https://github.com/BioPhoton/rx_level-up/commit/8b3795c))
 * chore(setup CI): progress setting up automated versioning. ([670291f](https://github.com/BioPhoton/rx_level-up/commit/670291f)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
 * chore(setup CI): progress setting up automated versioning. ([7cebf2f](https://github.com/BioPhoton/rx_level-up/commit/7cebf2f)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
 * chore(setup CI): progress setting up automated versioning. ([f00c3d6](https://github.com/BioPhoton/rx_level-up/commit/f00c3d6)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+* docs(CHANGELOG): 0.0.3 ([51e08af](https://github.com/BioPhoton/rx_level-up/commit/51e08af))
 * docs(CHANGELOG): 0.0.3 ([3c8795a](https://github.com/BioPhoton/rx_level-up/commit/3c8795a))
 * docs(CHANGELOG): 0.0.3 ([7072d7d](https://github.com/BioPhoton/rx_level-up/commit/7072d7d))
 * docs(README): updated CI process ([112b428](https://github.com/BioPhoton/rx_level-up/commit/112b428))
