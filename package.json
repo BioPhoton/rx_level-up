@@ -1,7 +1,7 @@
 {
   "name": "rx_level-up",
-  "version": "0.0.21",
-  "scripts":  {
+  "version": "0.0.22",
+  "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
