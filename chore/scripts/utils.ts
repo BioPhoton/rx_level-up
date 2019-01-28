@@ -79,7 +79,8 @@ export function backupPackageJson() {
 
   const source2 = join(config.libPath, 'package-lock.json');
   const target2 = join(config.libPath, '_package-lock.json');
-  return copyFile(source1, target1);
+  return copyFile(source1, target1)
+    .then(() => copyFile(source2, target2));
 }
 
 export function restorePackageJson() {
@@ -90,9 +91,9 @@ export function restorePackageJson() {
   const target2 = join(config.libPath, 'package-lock.json');
 
   return copyFile(source1, target1)
-    .then(() => deleteFile(source1));
-  // .then(() => copyFile(source2, target2))
-  // .then(() => utils.deleteFile(source2))
+    .then(() => deleteFile(source1))
+    .then(() => copyFile(source2, target2))
+    .then(() => deleteFile(source2));
 }
 
 export function getCommitConvention() {
