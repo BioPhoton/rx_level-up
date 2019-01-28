@@ -2,6 +2,7 @@
 import {refresh, versionBump, changelog,
   createVersionFile, releaseGithub} from './tasks/index';
 import {exec} from './utils';
+import {refreshVersionFile} from './tasks/version';
 
 console.info('Start release', );
 
@@ -10,8 +11,9 @@ Promise.resolve()
   // .then(() => ciCheck())
   // rebase project with git version
   // .then(() => refresh())
+  .then(() => refreshVersionFile())
   // build lib
-  .then(() => { return exec('npm run build'); })
+  // .then(() => { return exec('npm run build'); })
   // create changelog based onn new version
  // .then(() => changelog())
   // bump version and tag it

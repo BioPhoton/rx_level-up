@@ -1,9 +1,54 @@
 import {writeFileSync} from 'fs';
 import {gitDescribeSync} from 'git-describe';
-import {relative, resolve} from 'path';
-import {version} from '../../../package.json';
+import {relative, resolve, join} from 'path';
+// import {version as packaeVersion} from '../../../package.json';
+import {
+  backupPackageJson, exec, getBump, getCommitConvention,
+  restorePackageJson
+} from '../utils';
+import {config} from '../../config';
 
-export function createVersionFile(): Promise<boolean> {
+export function refreshVersionFile(): Promise<boolean> {
+  return backupPackageJson()
+  // ensures that the right convention was detected
+    .then(() => getCommitConvention())
+    .then((preset) => {
+      return (preset === config.validPreset) ?
+        Promise.resolve(preset) : Promise.reject('invalid preset: ' + preset);
+    })
+    // ensures that a bump type was detected
+    .then(getBump)
+    .then(
+      (bump) => {
+        return (bump) ? Promise.resolve(bump) : Promise.reject('invalide pump: ' +bump);
+      })
+    // npm version [detectedBump] bumps the version specified in detectedBump
+    // and writes the new data back to package.json
+    // If you run npm version in a git repo, it will also create a version commit and tag.
+    // This behavior is disabled by --no-git-tag-version
+    // the var detectedBump specifies the segment of the version code to bump
+    .then((bump) => {
+      console.info('bump version without git ', bump);
+      return exec('npm --no-git-tag-version version ' + bump, {cwd: config.libPath});
+    })
+    // get the version number of package.json
+    .then(() => {
+      const packageJson = require(join(config.libPath, 'package.json'));
+      const detectedVersion = packageJson.version;
+      console.log('new version ', detectedVersion);
+      return Promise.resolve(detectedVersion);
+    })
+    .then(createVersionFile)
+    // Replace the already bumped package.json with the _package.json initial copy
+    .then(() => {
+      return restorePackageJson().then(() => {
+        console.info('restored package files');
+      });
+    });
+}
+
+
+export function createVersionFile(version: string): Promise<boolean> {
   console.log(`version`, version);
   return new Promise((res, rej) => {
     try {
