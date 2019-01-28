@@ -1,5 +1,8 @@
 import {exec, getCommitConvention} from '../utils';
 
+import * as colors from 'colors';
+colors.enable();
+
 // release on git
 export function releaseGithub(): Promise<boolean> {
 
@@ -9,8 +12,7 @@ export function releaseGithub(): Promise<boolean> {
   console.info('start github release: ');
   return getCommitConvention()
     .then((preset) => {
-
-      console.info('detected commit convention: ', preset);
+      console.info(`detected commit convention: ${preset}`.gray);
       return new Promise((resolve, reject) => {
         exec('conventional-github-releaser -p ' + preset, (err, responses) => {
           if (err !== undefined) {

@@ -8,13 +8,16 @@ import {
 } from '../utils';
 import {config} from '../../config';
 
+import * as colors from 'colors';
+colors.enable();
+
 export function refreshVersionFile(): Promise<boolean> {
   return backupPackageJson()
   // ensures that the right convention was detected
     .then(() => getCommitConvention())
     .then((preset) => {
       return (preset === config.validPreset) ?
-        Promise.resolve(preset) : Promise.reject('invalid preset: ' + preset);
+        Promise.resolve(preset) : Promise.reject('invalid preset: '.red + preset.red);
     })
     // ensures that a bump type was detected
     .then(getBump)
@@ -28,21 +31,21 @@ export function refreshVersionFile(): Promise<boolean> {
     // This behavior is disabled by --no-git-tag-version
     // the var detectedBump specifies the segment of the version code to bump
     .then((bump) => {
-      console.info('bump version without git ', bump);
+      console.info('bump version without git '.gray, bump.gray);
       return exec('npm --no-git-tag-version version ' + bump, {cwd: config.libPath});
     })
     // get the version number of package.json
     .then(() => {
       const packageJson = require(join(config.libPath, 'package.json'));
       const detectedVersion = packageJson.version;
-      console.log('new version ', detectedVersion);
+      console.log('new version '.gray, detectedVersion.gray);
       return Promise.resolve(detectedVersion);
     })
     .then(createVersionFile)
     // Replace the already bumped package.json with the _package.json initial copy
     .then(() => {
       return restorePackageJson().then(() => {
-        console.info('restored package files');
+        console.info('restored package files'.green);
       });
     });
 }
@@ -68,7 +71,7 @@ export function createVersionFile(version: string): Promise<boolean> {
 
       writeFileSync(file, content, {encoding: 'utf-8'});
 
-      console.log(`Wrote version info ${gitInfo.raw} to ${relative(resolve(__dirname, '..'), file)}`);
+      console.log(`Wrote version info ${gitInfo.raw} to ${relative(resolve(__dirname, '..'), file)}`.green);
     } catch (e) {
       rej(false);
     }

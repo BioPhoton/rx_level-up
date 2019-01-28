@@ -2,6 +2,9 @@ import {join} from 'path';
 import {config} from '../../config';
 import {deleteFile, exec} from '../utils';
 
+import * as colors from 'colors';
+colors.enable();
+
 export function refresh(hard = false): Promise<boolean> {
 
   return Promise.resolve(hard)

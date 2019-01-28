@@ -1,6 +1,9 @@
 import {exec, getBump, getPackageVersion} from '../utils';
 import {config} from '../../config';
 
+import * as colors from 'colors';
+colors.enable();
+
 // create version bump
 let detectedBump;
 let detectedVersion;

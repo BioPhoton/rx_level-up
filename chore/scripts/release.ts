@@ -1,10 +1,12 @@
-// import * as colors from 'colors';
+import * as colors from 'colors';
 import {refresh, versionBump, changelog,
   createVersionFile, releaseGithub} from './tasks/index';
 import {exec} from './utils';
 import {refreshVersionFile} from './tasks/version';
 
-console.info('Start release', );
+colors.enable();
+
+console.info('Start release'.green);
 
 Promise.resolve()
 // check status of travis build
@@ -24,5 +26,5 @@ Promise.resolve()
   // release on npm
   // .then(() => releaseNpm())
   // if any of the above fails catch error and log it
-  .catch((err) => console.info('release error', err));
+  .catch((err) => console.info('release error'.red, err));
 

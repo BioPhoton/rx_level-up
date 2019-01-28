@@ -6,13 +6,13 @@ import {config} from '../config';
 export const exec = util.promisify(require('child_process').exec);
 
 export function deleteFile(source): Promise<boolean> {
-  console.info('start deleting ', source);
+  console.info(`start deleting ${source}`.gray);
   return exec('rimraf ' + source, {cwd: config.__base})
     .then(() => {
-      console.info('remove files done');
+      console.info(`remove files done`.gray);
     })
     .catch((err) => {
-      console.error('remove files error: ', err);
+      console.error(`remove files error: ${err}`.red);
     });
 }
 
@@ -20,7 +20,7 @@ export function copyFile(source, target, cb = () => {}): Promise<boolean | strin
   return new Promise((resolve, reject) => {
 
     const getDirname = dirname;
-    console.info('copyFile', source, target);
+    console.info(`copyFile ${source} ${target}`.gray);
     function ensureDirectoryExistence(filePath) {
       const tf  = getDirname(filePath);
       console.log(getDirname(tf));

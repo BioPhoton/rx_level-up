@@ -1,3 +1,7 @@
+#Preconditions
+
+git config --global credential.helper wincred
+
 # Process
 1. bump version of the libs `package.json`
 2. rebuild package with new version `npm run build`

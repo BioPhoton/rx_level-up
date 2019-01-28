@@ -11,6 +11,9 @@ import {
   restorePackageJson
 } from '../utils';
 
+import * as colors from 'colors';
+colors.enable();
+
 let detectedPreset;
 let detectedBump;
 let detectedVersion;
