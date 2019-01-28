@@ -18,13 +18,13 @@ export const c = colors;
 export const exec = util.promisify(require('child_process').exec);
 
 export function deleteFile(source): Promise<boolean> {
-  console.info(`start deleting ${source}`.gray);
+  console.info(`start deleting ${source}`.data);
   return exec('rimraf ' + source, {cwd: config.__base})
     .then(() => {
-      console.info(`remove files done`.gray);
+      console.info(`remove files done`.data);
     })
     .catch((err) => {
-      console.error(`remove files error: ${err}`.red);
+      console.error(`remove files error: ${err}`.error);
     });
 }
 
@@ -32,7 +32,7 @@ export function copyFile(source, target, cb = () => {}): Promise<boolean | strin
   return new Promise((resolve, reject) => {
 
     const getDirname = dirname;
-    console.info(`copyFile ${source} ${target}`.gray);
+    console.info(`copyFile ${source} ${target}`.data);
     function ensureDirectoryExistence(filePath) {
       const tf  = getDirname(filePath);
       console.log(getDirname(tf));
@@ -96,7 +96,7 @@ export function backupPackageJson() {
 }
 
 export function restorePackageJson() {
-  console.log(`start restorePackageJson`.green);
+  console.log(`start restorePackageJson`.info);
   const source1 = join(config.libPath, '_package.json');
   const target1 = join(config.libPath, 'package.json');
 

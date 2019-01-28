@@ -15,7 +15,8 @@ Promise.resolve()
   // build lib
   .then(() => {
     console.info(`Start build`.info);
-    return exec('npm run build');
+    return exec('npm run build')
+      .then(() => {console.info(`Finnished build!`.success)});
   })
   // create changelog based onn new version
   .then(() => changelog())
