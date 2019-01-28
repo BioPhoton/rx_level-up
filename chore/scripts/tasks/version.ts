@@ -55,8 +55,7 @@ export function createVersionFile(version: string): Promise<boolean> {
       const gitInfo = gitDescribeSync({
         dirtyMark: false,
         dirtySemver: false,
-        longSemver: true,
-        version
+        longSemver: true
       });
 
       const file = resolve('src', 'environments', 'version.ts');
@@ -64,7 +63,7 @@ export function createVersionFile(version: string): Promise<boolean> {
   // IMPORTANT: THIS FILE IS AUTO GENERATED!
   // IMPORTANT: DO NOT MANUALLY EDIT OR CHECKIN!
 
-  export const VERSION = ${JSON.stringify(gitInfo, null, 4)};
+  export const VERSION = ${JSON.stringify({...gitInfo, version}, null, 4)};
   `;
 
       writeFileSync(file, content, {encoding: 'utf-8'});

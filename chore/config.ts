@@ -1,6 +1,6 @@
 import path from 'path';
 
-const __base = __dirname + '/../';
+const __base = __dirname + './../';
 
 export const config = {
   libPath: path.join(__base, './'),
