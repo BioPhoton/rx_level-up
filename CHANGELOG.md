@@ -1,6 +1,13 @@
+## <small>0.0.6 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.5 (2019-01-28)</small>
 
+* chore(release): 0.0.5 (patch) ([eda94dd](https://github.com/BioPhoton/rx_level-up/commit/eda94dd))
 * chore(setup CI): progress setting up automated versioning. ([e4cd217](https://github.com/BioPhoton/rx_level-up/commit/e4cd217)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+* docs(CHANGELOG): 0.0.5 ([e944291](https://github.com/BioPhoton/rx_level-up/commit/e944291))
 
 
 
