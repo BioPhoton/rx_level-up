@@ -20,6 +20,7 @@ let detectedVersion;
 
 export function changelog(): Promise<ChildProcess> {
 // create changelog
+  console.info(`Start generating changelog`.info);
 
 // # Backup the libs/.../package.json file
 // we copy it to have the initial state saved.
@@ -47,7 +48,7 @@ export function changelog(): Promise<ChildProcess> {
     // This behavior is disabled by --no-git-tag-version
     // the var detectedBump specifies the segment of the version code to bump
     .then((bump) => {
-      console.info('bump version without git ', detectedBump);
+      console.info(`bump version for ${detectedBump} without git`.data);
       return exec('npm --no-git-tag-version version ' + detectedBump, {cwd: config.libPath});
     })
     // conventional-changelog creates a chagnelog markdown from commits
@@ -62,16 +63,11 @@ export function changelog(): Promise<ChildProcess> {
     .then(() => {
       const packageJson = require(join(config.libPath, 'package.json'));
       detectedVersion = packageJson.version;
-      console.log('new version ', detectedVersion);
     })
     // copy package.json into dist because we want to have the new version in the dist folder also
     .then(() => copyFile(join(config.libPath, 'package.json'), join(config.libPath, 'package.json')))
     // Replace the already bumped package.json with the _package.json initial copy
-    .then(() => {
-      return restorePackageJson().then(() => {
-        console.info('restored package files');
-      });
-    })
+    .then(() => restorePackageJson())
     // commit with comment
     .then(() => exec(`git commit -m"docs(CHANGELOG): ${detectedVersion}"`, {cwd: config.libPath}));
 }

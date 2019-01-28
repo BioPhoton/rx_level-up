@@ -15,7 +15,7 @@ export function releaseGithub(): Promise<boolean> {
       console.info(`detected commit convention: ${preset}`.gray);
       return new Promise((resolve, reject) => {
         exec('conventional-github-releaser -p ' + preset, (err, responses) => {
-          if (err !== undefined) {
+          if (err !== null) {
             console.log('error in github release', err);
             reject(err);
           } else {

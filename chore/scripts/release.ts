@@ -1,12 +1,9 @@
-import * as colors from 'colors';
 import {refresh, versionBump, changelog,
   createVersionFile, releaseGithub} from './tasks/index';
-import {exec} from './utils';
+import {c, exec} from './utils';
 import {refreshVersionFile} from './tasks/version';
 
-colors.enable();
-
-console.info('Start release'.green);
+console.info('Start release'.info);
 
 Promise.resolve()
 // check status of travis build
@@ -16,7 +13,10 @@ Promise.resolve()
   // generate version file
   .then(() => refreshVersionFile())
   // build lib
-  .then(() => exec('npm run build'))
+  .then(() => {
+    console.info(`Start build`.info);
+    return exec('npm run build');
+  })
   // create changelog based onn new version
   .then(() => changelog())
   // bump version and tag it

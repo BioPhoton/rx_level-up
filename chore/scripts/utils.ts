@@ -3,6 +3,18 @@ import {dirname, join} from 'path';
 import util from 'util';
 import {config} from '../config';
 
+import * as colors from 'colors';
+colors.setTheme({
+  info: 'cyan',
+  data: 'grey',
+  help: 'cyan',
+  warn: 'yellow',
+  debug: 'blue',
+  success: 'green',
+  error: 'red'
+});
+export const c = colors;
+
 export const exec = util.promisify(require('child_process').exec);
 
 export function deleteFile(source): Promise<boolean> {
@@ -84,6 +96,7 @@ export function backupPackageJson() {
 }
 
 export function restorePackageJson() {
+  console.log(`start restorePackageJson`.green);
   const source1 = join(config.libPath, '_package.json');
   const target1 = join(config.libPath, 'package.json');
 
@@ -124,7 +137,9 @@ export function getBump() {
             return Promise.resolve(bump);
           }
         })
-        .catch(console.log);
+        .catch((e) => {
+          console.log(`Error in detecting the recommended bump${e}`);
+        });
     });
 }
 
