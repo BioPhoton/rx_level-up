@@ -1,5 +1,13 @@
+## <small>0.0.17 (2019-01-28)</small>
+
+* chore(setup CI): automated versioning progress ([b9b910a](https://github.com/BioPhoton/rx_level-up/commit/b9b910a)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+
+
+
 ## <small>0.0.16 (2019-01-28)</small>
 
+* chore(release): 0.0.16 (patch) ([b1c91aa](https://github.com/BioPhoton/rx_level-up/commit/b1c91aa))
+* docs(CHANGELOG): 0.0.16 ([5fbcf3a](https://github.com/BioPhoton/rx_level-up/commit/5fbcf3a))
 
 
 
