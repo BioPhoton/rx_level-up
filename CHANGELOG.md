@@ -1,8 +1,15 @@
+## <small>0.0.24 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.23 (2019-01-28)</small>
 
+* chore(release): 0.0.23 (patch) ([ae077cb](https://github.com/BioPhoton/rx_level-up/commit/ae077cb))
 * chore(setup CI): automated versioning progress colors ([9adcf19](https://github.com/BioPhoton/rx_level-up/commit/9adcf19)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
 * chore(setup CI): automated versioning progress colors ([580a7a8](https://github.com/BioPhoton/rx_level-up/commit/580a7a8)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
 * chore(setup CI): removed console.log ([d5cd594](https://github.com/BioPhoton/rx_level-up/commit/d5cd594)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+* docs(CHANGELOG): 0.0.23 ([858c48b](https://github.com/BioPhoton/rx_level-up/commit/858c48b))
 
 
 
