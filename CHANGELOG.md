@@ -1,5 +1,12 @@
+## <small>0.0.10 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.9 (2019-01-28)</small>
 
+* chore(release): 0.0.9 (patch) ([a36df90](https://github.com/BioPhoton/rx_level-up/commit/a36df90))
+* docs(CHANGELOG): 0.0.9 ([d1ae2db](https://github.com/BioPhoton/rx_level-up/commit/d1ae2db))
 
 
 
