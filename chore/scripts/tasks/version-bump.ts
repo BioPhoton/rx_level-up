@@ -9,11 +9,11 @@ let detectedBump;
 let detectedVersion;
 
 export function versionBump() {
-  console.info('start versionBump');
+  console.info('Start versionBump'.info);
   return getBump()
     .then((bump) => {
       detectedBump = bump;
-      console.info('detected bump type: ' + detectedBump);
+      console.info(`detected bump type: ${detectedBump}`.data);
       return Promise.resolve();
     })
     // npm version [detectedBump] bumps the version specified in detectedBump
@@ -23,7 +23,7 @@ export function versionBump() {
     .then(() => getPackageVersion())
     .then((version) => {
       detectedVersion = version;
-      console.info('detected version: ' + detectedVersion);
+      console.info(`detected version: ${detectedVersion}`.data);
       return Promise.resolve();
     })
     .then(() => exec('git commit -m "chore(release): ' + detectedVersion + ' (' + detectedBump + ')"', {cwd: config.__base}))
@@ -32,10 +32,10 @@ export function versionBump() {
     // --follow-tags also pushes the new tags
     // source: https://git-scm.com/docs/git-push
     .then(() => {
-      console.info('start git push --follow-tags');
+      console.info(`start git push --follow-tags`.data);
       return exec('git push --follow-tags', {cwd: config.__base})
         .then(() => {
-          console.info('pushed repo and created tag');
+          console.info('pushed repo and created tag'.success);
         });
     });
 
