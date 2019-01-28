@@ -1,5 +1,12 @@
+## <small>0.0.12 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.11 (2019-01-28)</small>
 
+* chore(release): 0.0.11 (patch) ([cac114a](https://github.com/BioPhoton/rx_level-up/commit/cac114a))
+* docs(CHANGELOG): 0.0.11 ([1af3b34](https://github.com/BioPhoton/rx_level-up/commit/1af3b34))
 
 
 
