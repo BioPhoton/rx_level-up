@@ -110,12 +110,16 @@ export function getCommitConvention() {
 }
 
 export function getBump() {
+  console.log('in getBump');
   return getCommitConvention()
     .then((preset) => {
+      console.log('bumpRpresetes', preset);
+
       // Detect the recommended bump type by the conventional-commit standard
       // source: https://github.com/conventional-changelog-archived-repos/conventional-recommended-bump/blob/master/README.md
       return exec('conventional-recommended-bump -p ' + preset, {cwd: config.__base})
         .then((bumpRes) => {
+          console.log('bumpRes', bumpRes);
 
           if (!bumpRes.stdout || bumpRes.stderr) {
             return Promise.reject(bumpRes.stderr || false);
@@ -127,9 +131,9 @@ export function getBump() {
         .catch(console.log);
     });
 }
-/*
+
  export function getPackageVersion () {
- const packageJson = require(join(config.packagedFolder, 'package.json'))
+ const packageJson = require(join(config.packagedFolder, 'package.json'));
  return Promise.resolve(packageJson.version);
  }
- */
+

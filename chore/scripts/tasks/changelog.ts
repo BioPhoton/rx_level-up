@@ -1,6 +1,7 @@
 import {ChildProcess} from 'child_process';
 
 import {join} from 'path';
+import {config} from '../../config';
 import {
   backupPackageJson,
   copyFile,
@@ -9,7 +10,6 @@ import {
   getCommitConvention,
   restorePackageJson
 } from '../utils';
-const config = require('../../config');
 
 let detectedPreset;
 let detectedBump;
@@ -28,14 +28,14 @@ export function changelog(): Promise<ChildProcess> {
     .then(() => getCommitConvention())
     .then((preset) => {
       detectedPreset = preset;
-      return (detectedPreset === config.validPreset) ? Promise.resolve(detectedPreset) : Promise.reject(detectedPreset)
+      return (detectedPreset === config.validPreset) ?
+        Promise.resolve(detectedPreset) : Promise.reject('invalid preset: ' + detectedPreset);
     })
     // ensures that a bump type was detected
     .then(getBump)
     .then(
       (bump) => {
         detectedBump = bump;
-        console.info('detectedBump'.gray, detectedBump);
         return (detectedBump) ? Promise.resolve(detectedBump) : Promise.reject(detectedBump);
       })
     // npm version [detectedBump] bumps the version specified in detectedBump
@@ -44,7 +44,7 @@ export function changelog(): Promise<ChildProcess> {
     // This behavior is disabled by --no-git-tag-version
     // the var detectedBump specifies the segment of the version code to bump
     .then((bump) => {
-      console.info('bump version without git '.green, detectedBump);
+      console.info('bump version without git ', detectedBump);
       return exec('npm --no-git-tag-version version ' + detectedBump, {cwd: config.libPath});
     })
     // conventional-changelog creates a chagnelog markdown from commits
@@ -52,7 +52,7 @@ export function changelog(): Promise<ChildProcess> {
     // CHANGELOG.md it the name of the file to read from
     // -s Outputting to the infile so you don't need to specify the same file as outfile
     // -p Name of the preset you want to use. In this case it is angular that is stored in $preset
-    .then(() => exec('conventional-changelog -i CHANGELOG.md -s -p ' + detectedPreset, {cwd: config.libPath}))
+    .then(() => exec('conventional-changelog -i CHANGELOG.md -s -p -r 0 ' + detectedPreset, {cwd: config.libPath}))
     // add CHANGELOG.md to the commit
     .then(() => exec('git add CHANGELOG.md', {cwd: config.libPath}))
     // get the version number of package.json
@@ -66,7 +66,7 @@ export function changelog(): Promise<ChildProcess> {
     // Replace the already bumped package.json with the _package.json initial copy
     .then(() => {
       return restorePackageJson().then(() => {
-        console.info('restored package files'.green);
+        console.info('restored package files');
       });
     })
     // commit with comment

@@ -1,4 +1,3 @@
-import util from 'util';
 import {exec, getCommitConvention} from '../utils';
 
 // release on git
