@@ -1,6 +1,13 @@
+## <small>0.0.15 (2019-01-28)</small>
+
+
+
+
 ## <small>0.0.14 (2019-01-28)</small>
 
+* chore(release): 0.0.14 (patch) ([ddb343f](https://github.com/BioPhoton/rx_level-up/commit/ddb343f))
 * chore(setup CI): automated versioning progress implement logs ([235dbec](https://github.com/BioPhoton/rx_level-up/commit/235dbec)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+* docs(CHANGELOG): 0.0.14 ([e966a3e](https://github.com/BioPhoton/rx_level-up/commit/e966a3e))
 
 
 
