@@ -1,5 +1,13 @@
+## <small>0.0.22 (2019-01-28)</small>
+
+* chore(setup CI): automated versioning progress colors ([859d21e](https://github.com/BioPhoton/rx_level-up/commit/859d21e)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+
+
+
 ## <small>0.0.21 (2019-01-28)</small>
 
+* chore(release): 0.0.21 (patch) ([f74992d](https://github.com/BioPhoton/rx_level-up/commit/f74992d))
+* docs(CHANGELOG): 0.0.21 ([b1798c7](https://github.com/BioPhoton/rx_level-up/commit/b1798c7))
 
 
 
