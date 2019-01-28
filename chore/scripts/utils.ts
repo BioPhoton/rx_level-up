@@ -5,7 +5,7 @@ import {config} from '../config';
 
 export const exec = util.promisify(require('child_process').exec);
 
-export function deleteFile(source) {
+export function deleteFile(source): Promise<boolean> {
   console.info('start deleting ', source);
   return exec('rimraf ' + source, {cwd: config.__base})
     .then(() => {
@@ -132,7 +132,7 @@ export function getBump() {
     });
 }
 
- export function getPackageVersion () {
+export function getPackageVersion () {
  const packageJson = require(join(config.packagedFolder, 'package.json'));
  return Promise.resolve(packageJson.version);
  }

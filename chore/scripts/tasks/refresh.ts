@@ -1,20 +1,19 @@
 import {join} from 'path';
-import {deleteFile} from '../utils';
 import {config} from '../../config';
+import {deleteFile, exec} from '../utils';
 
-const {promisify} = require('util');
+export function refresh(hard = false): Promise<boolean> {
 
-const exec = promisify(require('child_process').exec);
-
-
-export function refresh(hard) {
-  if (hard === true) {
-    deleteFile(join(config.__base, 'node_modules'));
-  }
-
-  return Promise.resolve()
+  return Promise.resolve(hard)
   // pulls the latest version and rebase
     .then(() => {
+      if (hard) {
+        return deleteFile(join(config.__base, 'node_modules'))
+          .then(() => {
+            console.info('start git pull --rebase');
+            return exec('git pull --rebase', {cwd: config.__base});
+          });
+      }
       console.info('start git pull --rebase');
       return exec('git pull --rebase', {cwd: config.__base});
     })
@@ -22,9 +21,12 @@ export function refresh(hard) {
     .then(() => {
       console.info('done git pull --rebase');
       console.info('start npm install');
-      return exec('npm install', {cwd: config.__base});
+      return Promise.resolve(true);
+      // return exec('npm install', {cwd: config.__base});
     })
     .then(() => {
       console.info('end npm install');
+      return Promise.resolve(true);
     });
+
 }
