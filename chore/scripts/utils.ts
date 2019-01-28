@@ -35,7 +35,6 @@ export function copyFile(source, target, cb = () => {}): Promise<boolean | strin
     console.info(`copyFile ${source} ${target}`.data);
     function ensureDirectoryExistence(filePath) {
       const tf  = getDirname(filePath);
-      console.log(getDirname(tf));
       if (existsSync(tf)) {
         return true;
       }
