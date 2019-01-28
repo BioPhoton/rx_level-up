@@ -1,6 +1,6 @@
 {
   "name": "rx_level-up",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +29,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-brands-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@types/colors": "^1.2.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.3.3",
     "tslib": "^1.9.0",
