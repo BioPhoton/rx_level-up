@@ -1,6 +1,6 @@
-import {Location} from '../location/location.model';
+import {Location} from './location.model';
 
-export class Workshop {
+export class Talk {
   id: string;
   location: Location;
   title: string;

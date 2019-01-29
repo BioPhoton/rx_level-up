@@ -1,12 +1,51 @@
 [
   {
     "id": "1",
-    "locationId": "1",
-    "title": "RxJS Masterclass",
-    "date": "21",
+    "locationId": "2",
+    "title": "ngChina RxJS - Advanced skills",
+    "dateStart": "01.12.2018 ",
+    "teaser": "This training will bring your RxJs skills to the next level!   After a practical and detailed tour from creation to the destruction of streams   we will learn about multicasting, custom pipes and higher order observables.",
     "desc": "",
-    "logo": "",
+    "logo": "workshop/images/ng-china.svg",
+    "coverImage": "",
     "imgs": [],
-    "links": []
+    "links": ["https://ng-china.org/"]
+  },
+  {
+    "id": "2",
+    "locationId": "1",
+    "title": "Advanced RxJS Master Class",
+    "dateStart": "14.11.2018 9:00AM",
+    "dateEnd": "14.11.2018 05:00PM",
+    "teaser": "In this workshop, you will get a really deep and complete knowledge of this library. We will learn about the big and little things that make the difference in understanding! After a practical and detailed tour from creation to the destruction of observables we will work on some concepts like multicasting, custom pipes and higher order observables. As the last exercise, we will solve a couple of real-life problems in a complete example from start to end. Sounds interesting? Looking forward to meeting you at the workshop.",
+    "desc": "",
+    "logo": "workshop/images/ng-poland-logo.png",
+    "coverImage": "",
+    "imgs": [],
+    "links": ["https://ng-poland.pl/"]
+  },
+  {
+    "id": "3",
+    "locationId": "3",
+    "title": "RxJS - Level up to advanced skills",
+    "dateStart": "22.10.2018",
+    "teaser": "In this workshop, you will get a more complete understanding of this library. We will learn about the big and little things that make the difference in understanding!  After a practical and detailed tour from creation to the destruction of streams we will work on some concepts like multicasting, custom pipes and higher order observables.",
+    "desc": "",
+    "logo": "workshop/images/ngtalks2019_logo.svg",
+    "coverImage": "",
+    "imgs": [],
+    "links": ["https://2018.ngtalks.io/workshops/rxjs-level-up-to-advanced-skills"]
+  },
+  {
+    "id": "4",
+    "locationId": "4",
+    "title": "Essentials in Reactive Programming with RxJS",
+    "dateStart": "19.01.2019",
+    "teaser": "RxJS is more popular than ever. It is baked into the Angular core and also used in frameworks like React, Vue, and others.  In this workshop, you will get an overview of the library and have the opportunity to learn about the concept, approach, and implementation of RxJS! After a practical and detailed tour through observables, attendees will also implement their first stream-based code.",
+    "desc": "",
+    "logo": "workshop/images/angular-sofia.jpeg",
+    "coverImage": "",
+    "imgs": [],
+    "links": ["https://www.meetup.com/de-DE/Angular-Sofia/events/257925859/"]
   }
 ]

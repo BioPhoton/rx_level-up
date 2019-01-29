@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {ApiService} from './api/api.service';
+import {Observable} from 'rxjs/index';
+import {Workshop} from './api/model/index';
+import {WorkshopFacade} from './workshop-state.facade';
 
 interface Quote {
   author: string;
@@ -40,26 +42,11 @@ export class AppComponent {
     }
   ];
 
-  workshops = [
-    {
-      title: 'Rx Leven-Up',
-      description: '',
-      coverImage: 'assets/images/ws_level-up.jpg'
-    },
-    {
-      title: 'Rx Leven-Up Advanced',
-      description: '',
-      coverImage: 'assets/images/ws_level-up_advanced.jpg'
-    },
-    {
-      title: 'Rx Leven-Up Expert',
-      description: '',
-      coverImage: 'assets/images/ws_level-up_expert.jpg'
-    }
-  ];
+  workshops$: Observable<Workshop[]>;
 
-  constructor(private dS: ApiService) {
-    this.dS.getWorkshops().subscribe(console.log);
+  constructor(private wF: WorkshopFacade) {
+    this.wF.load();
+    this.workshops$ = this.wF.getAll();
   }
 
 }

@@ -1,7 +1,37 @@
 [
   {
     "id": "1",
-    "country_code": "PL",
-    "location": "Warsaw"
+    "name": "Golden Floor Tower",
+    "ISO_3166-1_alpha2": "PL",
+    "city": "Warsaw",
+    "address": "Chłodna 51"
+  },
+  {
+    "id": "2",
+    "name": "Xiasha",
+    "ISO_3166-1_alpha2": "CN",
+    "city": "Hangzhou",
+    "address": "下沙, Jianggan"
+  },
+  {
+    "id": "3",
+    "name": "",
+    "ISO_3166-1_alpha2": "UI",
+    "city": "Kharkiv",
+    "address": "Blagovischenska str. 1"
+  },
+  {
+    "id": "4",
+    "name": "Sektor5",
+    "ISO_3166-1_alpha2": "AT",
+    "city": "Vienna",
+    "address": "sektor5, Siebenbrunnengasse 44"
+  },
+  {
+    "id": "5",
+    "name": "Campus X",
+    "ISO_3166-1_alpha2": "BG",
+    "city": "Sofia",
+    "address": "Siebenbrunnengasse 44"
   }
 ]

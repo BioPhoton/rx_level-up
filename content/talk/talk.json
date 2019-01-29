@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "location": 4,
+    "title": "An introduction to functional programming with RxJS",
+    "date": "20.01.2016",
+    "teaser": "An introduction to functional programming in RxJS and AgularJS. Learn how to leverage the power of RxJs in combination with AngularJS. Get ready to go and learn the essential basics.",
+    "desc": "",
+    "logo": "",
+    "coverImg": "talks/images/AngularViennaLogo.png",
+    "imgs": [],
+    "links": ["https://www.meetup.com/de-DE/Angular-Vienna/events/227194676/"]
+  },
+  {
+    "id": 2,
+    "location": 4,
+    "title": "An introduction to functional programming with RxJS",
+    "date": "20.01.2016",
+    "teaser": "An introduction to functional programming in RxJS and AgularJS. Learn how to leverage the power of RxJs in combination with AngularJS. Get ready to go and learn the essential basics.",
+    "desc": "",
+    "logo": "",
+    "coverImg": "talks/images/AngularViennaLogo.png",
+    "imgs": [],
+    "links": ["https://www.meetup.com/de-DE/Angular-Vienna/events/227194676/"]
+  }
+]
