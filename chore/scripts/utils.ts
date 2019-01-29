@@ -1,10 +1,8 @@
-import * as colors from 'colors';
 import {createReadStream, createWriteStream, existsSync, mkdirSync} from 'fs';
 import {dirname, join} from 'path';
 import util from 'util';
 import {addColors, createLogger, format, transports} from 'winston';
 import {config} from '../config';
-colors.enable();
 
 interface TransformableInfo {
   level: string;
