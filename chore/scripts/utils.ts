@@ -4,17 +4,13 @@ import {dirname, join} from 'path';
 import util from 'util';
 import {addColors, createLogger, format, transports} from 'winston';
 import {config} from '../config';
+colors.enable();
 
-colors.setTheme({
-  info: 'cyan',
-  data: 'grey',
-  help: 'cyan',
-  warn: 'yellow',
-  debug: 'blue',
-  success: 'green',
-  error: 'red'
-});
-export const c = colors;
+interface TransformableInfo {
+  level: string;
+  message: string;
+  [key: string]: any;
+}
 
 export const exec = util.promisify(require('child_process').exec);
 
@@ -148,16 +144,16 @@ const loggerConfig = {
     warn: 'yellow',
     data: 'grey',
     info: 'green',
-    mp: 'cyan',
-    sp: 'magenta',
-    fn: 'yellow'
+    mp: 'green',
+    sp: 'cyan',
+    fn: 'grey'
   }
 };
 
 addColors(loggerConfig.colors);
 
 export const logger = createLogger({
-  level: 'fn',
+  level: 'sp',
   levels: loggerConfig.levels,
   transports: [
     // - Write all logs error (and below) to `error.log`.
@@ -172,11 +168,20 @@ export const logger = createLogger({
 // with the colorized simple format.
 //
 
+
+// Define the format that mutates the info object.
+const highlightedFormat = format((info: TransformableInfo, opts?: any): TransformableInfo | boolean => {
+  if(info.level == 7) {
+      info.message = info.message + `?`;
+    }
+    return info;
+});
+
 if (process.env.NODE_ENV !== 'production') {
   logger.add(new transports.Console({
     format: format.combine(
       format.colorize(),
-      format.simple()
+      format.simple(),
     )
   }) as any);
 }

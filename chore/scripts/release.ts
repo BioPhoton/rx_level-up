@@ -15,17 +15,6 @@ import {
 } from './utils';
 import {deleteBackupPackageJson} from './tasks/package-backups';
 
-/*
- logger.error('error');
- logger.debug('debug');
- logger.warn('warn');
- logger.data('data');
- logger.info('info');
- logger.mP('mP');
- logger.silly('silly');
- logger.custom('custom');
- */
-
 logger.mp(`[S] Automated Release`);
 
 const state = {
@@ -62,6 +51,7 @@ backupPackageJson()
   // release on npm
   // .then(() => releaseNpm())
   .then(deleteBackupPackageJson)
+  .then(() => {logger.mp(`[E] Automated Release`);})
   // if any of the above fails catch error and log it
   .catch((err) => logger.error(`[X] Automated Release`));
 
