@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-material",
+            "outputPath": "dist/rx_level-up",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-material:build"
+            "browserTarget": "rx_level-up:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-material:build:production"
+              "browserTarget": "rx_level-up:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-material:build"
+            "browserTarget": "rx_level-up:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
       }
     }
   },
-  "defaultProject": "ng-material",
+  "defaultProject": "rx_level-up",
   "schematics": {
     "@schematics/angular:component": {
       "changeDetection": "OnPush",
