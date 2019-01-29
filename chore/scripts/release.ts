@@ -1,10 +1,19 @@
-import {changelog, backupPackageJson, createVersionFile, releaseGitHub, versionBump} from './tasks/index';
+import {config} from '../config';
 import {
-  exec, getBump, getCommitConvention, getPackageVersion, LOG_LEVELS,
+  backupPackageJson,
+  changelog,
+  createVersionFile,
+  releaseCommit,
+  releaseGitHub
+} from './tasks/index';
+import {
+  exec,
+  getBump,
+  getCommitConvention,
+  getPackageVersion,
   logger
 } from './utils';
-import {config} from '../config';
-import {restorePackageJson} from './tasks/package-backups';
+import {deleteBackupPackageJson} from './tasks/package-backups';
 
 /*
  logger.error('error');
@@ -27,11 +36,11 @@ const state = {
 
 backupPackageJson()
   .then(resolvePreconditions)
-// check status of travis build
-// .then(() => ciCheck())
-// rebase project with git version
-// .then(() => refresh())
-// generate version file
+  // check status of travis build
+  // .then(() => ciCheck())
+  // rebase project with git version
+  // .then(() => refresh())
+  // generate version file
   .then(() => createVersionFile(state.version))
   // build lib
   .then(() => {
@@ -45,16 +54,16 @@ backupPackageJson()
   // create changelog based onn new version
   .then(() => changelog(state.preset, state.version))
   // bump version and tag it
-  .then(() => versionBump(state.bump, state.version))
+  .then(() => releaseCommit(state.bump, state.version))
   // restore file
   // .then(restorePackageJson)
   // release on github
   .then(() => releaseGitHub(state.preset))
-// release on npm
+  // release on npm
   // .then(() => releaseNpm())
- // if any of the above fails catch error and log it
- .catch((err) => logger.error(`[X] Automated Release`));
-
+  .then(deleteBackupPackageJson)
+  // if any of the above fails catch error and log it
+  .catch((err) => logger.error(`[X] Automated Release`));
 
 
 function resolvePreconditions() {

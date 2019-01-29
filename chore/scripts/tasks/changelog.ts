@@ -21,8 +21,6 @@ export function changelog(preset: string, version: string): Promise<ChildProcess
     return exec(`conventional-changelog -i CHANGELOG.md -s -p ${preset}`, {cwd: config.libPath})
     // Add CHANGELOG.md to the commit
     .then(() => exec('git add CHANGELOG.md', {cwd: config.libPath}))
-    // Copy package.json into dist because we want to have the new version in the dist folder also
-    .then(() => copyFile(join(config.libPath, 'package.json'), join(config.libPath, 'package.json')))
     // Commit with comment
     .then(() => exec(`git commit -m"docs(CHANGELOG): ${version}"`, {cwd: config.libPath}))
     .then(() => {

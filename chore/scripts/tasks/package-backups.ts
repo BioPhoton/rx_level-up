@@ -36,3 +36,16 @@ export function restorePackageJson(): Promise<boolean> {
     })
     .catch(() => logger.error(`[X] Restore package.json & package-lock.json`));
 }
+
+export function deleteBackupPackageJson(): Promise<boolean> {
+  logger.fn(`[S] Delete backup package.json & package-lock.json`);
+  const source1 = join(config.libPath, '_package.json');
+  const source2 = join(config.libPath, '_package-lock.json');
+
+  return deleteFile(source1).then(() => deleteFile(source2))
+    .then(() => {
+      logger.fn(`[E] Delete backup package.json & package-lock.json`);
+      return Promise.resolve(true);
+    })
+    .catch(() => logger.error(`[X] Delete backup package.json & package-lock.json`));
+}
