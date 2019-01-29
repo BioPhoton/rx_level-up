@@ -1,55 +1,10 @@
 import {writeFileSync} from 'fs';
 import {gitDescribeSync} from 'git-describe';
-import {relative, resolve, join} from 'path';
-import {
-  c, backupPackageJson, exec, getBump, getCommitConvention,
-  restorePackageJson
-} from '../utils';
-import {config} from '../../config';
-
-export function refreshVersionFile(): Promise<boolean> {
-  console.info(`Start refreshVersionFile`.info);
-  return backupPackageJson()
-  // ensures that the right convention was detected
-    .then(() => getCommitConvention())
-    .then((preset) => {
-      return (preset === config.validPreset) ?
-        Promise.resolve(preset) : Promise.reject('invalid preset: '.red + preset.red);
-    })
-    // ensures that a bump type was detected
-    .then(getBump)
-    .then(
-      (bump) => {
-        return (bump) ? Promise.resolve(bump) : Promise.reject('invalide pump: ' +bump);
-      })
-    // npm version [detectedBump] bumps the version specified in detectedBump
-    // and writes the new data back to package.json
-    // If you run npm version in a git repo, it will also create a version commit and tag.
-    // This behavior is disabled by --no-git-tag-version
-    // the var detectedBump specifies the segment of the version code to bump
-    .then((bump) => {
-      console.info(`bump version without git ${bump}`.data);
-      return exec('npm --no-git-tag-version version ' + bump, {cwd: config.libPath});
-    })
-    // get the version number of package.json
-    .then(() => {
-      const packageJson = require(join(config.libPath, 'package.json'));
-      const detectedVersion = packageJson.version;
-      console.log(`new version ${detectedVersion}`.data);
-      return Promise.resolve(detectedVersion);
-    })
-    .then(createVersionFile)
-    // Replace the already bumped package.json with the _package.json initial copy
-    .then(() => {
-      return restorePackageJson().then(() => {
-        console.info('restored package files'.success);
-      });
-    });
-}
-
+import {relative, resolve} from 'path';
+import {logger} from '../utils';
 
 export function createVersionFile(version: string): Promise<boolean> {
-    return new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     try {
       const gitInfo = gitDescribeSync({
         dirtyMark: false,
@@ -60,14 +15,14 @@ export function createVersionFile(version: string): Promise<boolean> {
       const file = resolve('src', 'environments', 'version.ts');
       const content = `
   // IMPORTANT: THIS FILE IS AUTO GENERATED!
-  // IMPORTANT: DO NOT MANUALLY EDIT OR CHECKIN!
+  // IMPORTANT: DO NOT MANUALLY EDIT OR CHECK IN!
 
   export const VERSION = ${JSON.stringify({...gitInfo, version}, null, 4)};
   `;
 
       writeFileSync(file, content, {encoding: 'utf-8'});
 
-      console.log(`Wrote version info ${gitInfo.raw} to ${relative(resolve(__dirname, '..'), file)}`.green);
+      logger.fn(`Wrote version info ${gitInfo.raw} to ${relative(resolve(__dirname, '..'), file)}`);
     } catch (e) {
       rej(false);
     }
