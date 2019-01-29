@@ -40,3 +40,5 @@ Thumbs.db
 
 # App specifics
 src/environments/version.ts
+CI-combined.log
+CI-error.log

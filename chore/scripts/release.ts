@@ -4,6 +4,7 @@ import {
   logger
 } from './utils';
 import {config} from '../config';
+import {restorePackageJson} from './tasks/package-backups';
 
 /*
  logger.error('error');
@@ -45,6 +46,8 @@ backupPackageJson()
   .then(() => changelog(state.preset, state.version))
   // bump version and tag it
   .then(() => versionBump(state.bump, state.version))
+  // restore file
+  // .then(restorePackageJson)
   // release on github
   .then(() => releaseGitHub(state.preset))
 // release on npm
