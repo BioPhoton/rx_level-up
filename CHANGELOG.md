@@ -1,3 +1,12 @@
+# [0.1.0](https://github.com/BioPhoton/rx_level-up/compare/0.0.42...0.1.0) (2019-01-29)
+
+
+### Features
+
+* **automated CI:** implement automated release process ([7e41522](https://github.com/BioPhoton/rx_level-up/commit/7e41522))
+
+
+
 ## [0.0.42](https://github.com/BioPhoton/rx_level-up/compare/0.0.40...0.0.42) (2019-01-29)
 
 
