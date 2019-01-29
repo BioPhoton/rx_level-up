@@ -2,6 +2,10 @@
 
 
 
+## [0.0.32](https://github.com/BioPhoton/rx_level-up/compare/0.0.24...0.0.32) (2019-01-29)
+
+
+
 ## <small>0.0.24 (2019-01-28)</small>
 
 
