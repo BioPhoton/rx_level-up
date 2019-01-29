@@ -1,6 +1,6 @@
-import {copyFile, deleteFile, logger} from '../utils';
-import {config} from '../../config';
 import {join} from 'path';
+import {config} from '../../config';
+import {copyFile, deleteFile, logger} from '../utils';
 
 export function backupPackageJson(): Promise<boolean> {
   logger.fn(`[S] Backup package.json & package-lock.json`);

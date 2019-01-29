@@ -9,14 +9,14 @@ export function releaseGitHub(preset: string): Promise<boolean> {
 
   logger.sp('[S] GitHub release');
   return new Promise((resolve, reject) => {
-        exec('conventional-github-releaser -p ' + preset, (err, responses) => {
-          if (err !== null) {
-            logger.error('[X] Github release');
-            reject(err);
-          } else {
-            logger.sp('[E] Github release');
-            resolve(responses);
-          }
-        });
-      });
+    exec('conventional-github-releaser -p ' + preset, (err, responses) => {
+      if (err !== null) {
+        logger.error('[X] Github release');
+        reject(err);
+      } else {
+        logger.sp('[E] Github release');
+        resolve(responses);
+      }
+    });
+  });
 }

@@ -6,6 +6,7 @@ import {
   releaseCommit,
   releaseGitHub
 } from './tasks/index';
+import {deleteBackupPackageJson} from './tasks/package-backups';
 import {
   exec,
   getBump,
@@ -13,7 +14,6 @@ import {
   getPackageVersion,
   logger
 } from './utils';
-import {deleteBackupPackageJson} from './tasks/package-backups';
 
 logger.mp(`[S] Automated Release`);
 
@@ -51,7 +51,9 @@ backupPackageJson()
   // release on npm
   // .then(() => releaseNpm())
   .then(deleteBackupPackageJson)
-  .then(() => {logger.mp(`[E] Automated Release`);})
+  .then(() => {
+    logger.mp(`[E] Automated Release`);
+  })
   // if any of the above fails catch error and log it
   .catch((err) => logger.error(`[X] Automated Release`));
 

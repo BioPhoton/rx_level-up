@@ -171,10 +171,10 @@ export const logger = createLogger({
 
 // Define the format that mutates the info object.
 const highlightedFormat = format((info: TransformableInfo, opts?: any): TransformableInfo | boolean => {
-  if(info.level == 7) {
-      info.message = info.message + `?`;
-    }
-    return info;
+  if (info.level == 7) {
+    info.message = info.message + `?`;
+  }
+  return info;
 });
 
 if (process.env.NODE_ENV !== 'production') {
