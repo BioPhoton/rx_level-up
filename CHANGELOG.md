@@ -1,3 +1,7 @@
+## [0.0.40](https://github.com/BioPhoton/rx_level-up/compare/0.0.39...0.0.40) (2019-01-29)
+
+
+
 ## [0.0.39](https://github.com/BioPhoton/rx_level-up/compare/0.0.38...0.0.39) (2019-01-29)
 
 
