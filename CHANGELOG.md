@@ -1,3 +1,18 @@
+# [0.2.0](https://github.com/BioPhoton/rx_level-up/compare/0.1.0...0.2.0) (2019-01-31)
+
+
+### Bug Fixes
+
+* **wrong project name:** fixed angular.json's wrong project names ([157ca1a](https://github.com/BioPhoton/rx_level-up/commit/157ca1a))
+
+
+### Features
+
+* **use github as cdn:** Use github as a cdn for site content. ([8d79a51](https://github.com/BioPhoton/rx_level-up/commit/8d79a51)), closes [#1](https://github.com/BioPhoton/rx_level-up/issues/1)
+* **use-github-as-cdn-for-website-content:** decided on basic content types, start implement past content ([17870d2](https://github.com/BioPhoton/rx_level-up/commit/17870d2)), closes [#2](https://github.com/BioPhoton/rx_level-up/issues/2)
+
+
+
 # [0.1.0](https://github.com/BioPhoton/rx_level-up/compare/0.0.42...0.1.0) (2019-01-29)
 
 
