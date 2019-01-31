@@ -28,7 +28,7 @@ export class GlobalOverlayService implements OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(n => this.close());
 
-    this.bookingFormPortal = new ComponentPortal(BookingFormComponent);
+    this.bookingFormPortal = new ComponentPortal<BookingFormComponent>(BookingFormComponent);
   }
 
   ngOnDestroy(): void {
