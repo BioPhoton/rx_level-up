@@ -1,3 +1,15 @@
+.cdk-overlay-container div[dir] {
+    margin-top: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.global-overlay {
+
+}
+
 .color-filter {
   position: absolute;
   z-index: 0;
@@ -18,12 +30,12 @@
 }
 
 .col-mat-card {
-  margin-left:30px;
-  margin-right:30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .full-width-img {
-  width:100%;
+  width: 100%;
   max-width: 100%;
   height: auto;
 }

@@ -1,9 +1,12 @@
+@import '~@angular/cdk/overlay-prebuilt.css';
+
 @mixin theme-rx-dark($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
+
 
   app-root {
     .color-filter.filter-primary-gradient {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/index';
 import { Workshop } from './api/model/index';
 import { WorkshopFacade } from './workshop-state.facade';
+import { GlobalOverlayService } from './global-overlay.service';
 
 interface Quote {
   author: string;
@@ -43,8 +44,12 @@ export class AppComponent {
 
   workshops$: Observable<Workshop[]>;
 
-  constructor(private wF: WorkshopFacade) {
+  constructor(private wF: WorkshopFacade, private goS: GlobalOverlayService) {
     this.wF.load();
     this.workshops$ = this.wF.getAll();
+  }
+
+  openBookingForm() {
+    this.goS.open();
   }
 }
