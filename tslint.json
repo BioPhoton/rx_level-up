@@ -1,6 +1,13 @@
 {
   "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-first",
+        "named-imports-order": "lowercase-first"
+      }
+    ],
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
