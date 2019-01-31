@@ -9,7 +9,7 @@ import {Workshop} from './api/model/workshop.model';
 })
 export class WorkshopFacade {
 
-  private workshopsSubject = new Subject();
+  private workshopsSubject = new Subject<Workshop[]>();
   private workshops$: Observable<Workshop[]> = this.workshopsSubject
     .asObservable()
     .pipe(
@@ -17,33 +17,32 @@ export class WorkshopFacade {
     );
 
   constructor(private api: ApiService) {
-
   }
 
-  load() {
+  load(): void {
     this.api.getWorkshops()
       .subscribe(
         l => this.workshopsSubject.next(l)
       );
   }
 
-  refreshAll(workshops: Workshop[]) {
+  refreshAll(workshops: Workshop[]): void {
     this.workshopsSubject.next(workshops);
   }
 
-  getAll() {
+  getAll(): Observable<Workshop[]> {
     return this.workshops$;
   }
 
   getLatest(count: number): Observable<Workshop[]> {
     return this.workshops$
       .pipe(
-        map(l => l.sort((a, b) => new Date(a.date).getTime() < new Date(b.date).getTime()),
-          map(l => l.slice(0, count)))
+        map(l => l.sort((a, b) => new Date(a.dateStart).getTime() < new Date(b.dateStart).getTime() ? 1 : -1)),
+        map(l => l.slice(0, count))
       );
   }
 
-  getByID(id: number): Observable<Workshop> {
+  getByID(id: string): Observable<Workshop> {
     return this.workshops$
       .pipe(
         map(l => l.find(i => i.id === id))

@@ -21,7 +21,7 @@ export class ApiService {
     return [
       [
         this.baseUrl,
-        VERSION.version
+        VERSION.branchName === 'master' ? VERSION.version : VERSION.branchName
       ].join('@'),
       'content',
       contentType,
@@ -31,19 +31,19 @@ export class ApiService {
 
 
   getLocations(): Observable<Location[]> {
-    return this.http.get(this.getUrl('location'));
+    return this.http.get<Location[]>(this.getUrl('location'));
   }
 
   getWorkshops(): Observable<Workshop[]> {
-    return this.http.get(this.getUrl('workshop'));
+    return this.http.get<Workshop[]>(this.getUrl('workshop'));
   }
 
   getTalks(): Observable<Talk[]> {
-    return this.http.get(this.getUrl('talk'));
+    return this.http.get<Talk[]>(this.getUrl('talk'));
   }
 
   getTestemonials(): Observable<Testemonial[]> {
-    return this.http.get(this.getUrl('testemonial'));
+    return this.http.get<Testemonial[]>(this.getUrl('testemonial'));
   }
 
 }

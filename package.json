@@ -1,6 +1,6 @@
 {
   "name": "rx_level-up",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "create-version-file": "ts-node -P./chore/tsconfig.json chore/scripts/createVersioFile.ts",
     "release": "ts-node -P./chore/tsconfig.json chore/scripts/release.ts"
   },
   "private": true,

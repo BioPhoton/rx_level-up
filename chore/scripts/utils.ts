@@ -150,7 +150,16 @@ const loggerConfig = {
 
 addColors(loggerConfig.colors);
 
-export const logger = createLogger({
+export const logger: {
+  error: () => void,
+  debug: () => void,
+  warn: () => void,
+  data: () => void,
+  info: () => void,
+  mp: () => void,
+  sp: () => void,
+  fn: () => void
+} | any = createLogger({
   level: 'sp',
   levels: loggerConfig.levels,
   transports: [
@@ -165,21 +174,12 @@ export const logger = createLogger({
 // If we're not in production then **ALSO** log to the `console`
 // with the colorized simple format.
 //
-
-
-// Define the format that mutates the info object.
-const highlightedFormat = format((info: TransformableInfo, opts?: any): TransformableInfo | boolean => {
-  if (info.level == 7) {
-    info.message = info.message + `?`;
-  }
-  return info;
-});
-
 if (process.env.NODE_ENV !== 'production') {
   logger.add(new transports.Console({
     format: format.combine(
       format.colorize(),
       format.simple(),
+      format.json()
     )
   }) as any);
 }

@@ -2,7 +2,7 @@ import {Location} from './location.model';
 
 export class Workshop {
   id: string;
-  location: Location;
+  locationId: string;
   title: string;
   dateStart: string;
   dateEnd: string;

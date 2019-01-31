@@ -83,5 +83,5 @@ function resolvePreconditions() {
             });
         });
     })
-    .catch(() => logger.error(`[X] Resolve preconditions`));
+    .catch((e) => logger.error(`[X] Resolve preconditions`, e));
 }
