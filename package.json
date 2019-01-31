@@ -1,6 +1,6 @@
 {
   "name": "rx_level-up",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -40,15 +40,19 @@
     "@angular/language-service": "^7.2.2",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "@types/node": "~8.9.4",
     "conventional-changelog": "^3.0.5",
     "conventional-changelog-angular": "^5.0.2",
     "conventional-changelog-cli": "^2.0.11",
     "conventional-commits-detector": "^1.0.2",
     "conventional-github-releaser": "^3.1.2",
     "conventional-recommended-bump": "^4.0.4",
+    "semver": "^5.6.0",
+    "ts-node": "^5.0.1",
+    "typescript": "~3.2.4",
     "git-describe": "^4.0.3",
+    "winston": "^3.2.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -57,10 +61,6 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
-    "semver": "^5.6.0",
-    "ts-node": "^5.0.1",
-    "tslint": "~5.9.1",
-    "typescript": "~3.2.4",
-    "winston": "^3.2.0"
+    "tslint": "~5.9.1"
   }
 }

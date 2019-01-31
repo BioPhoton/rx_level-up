@@ -1,7 +1,12 @@
 import {writeFileSync} from 'fs';
 import {gitDescribeSync} from 'git-describe';
 import {relative, resolve} from 'path';
-import {logger} from '../utils';
+import {getPackageVersion, logger} from '../utils';
+
+export function createVersionFileSolo() {
+  return getPackageVersion()
+    .then(createVersionFile);
+}
 
 export function createVersionFile(version: string): Promise<boolean> {
   return new Promise((res, rej) => {
