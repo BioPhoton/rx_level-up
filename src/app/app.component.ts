@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {Observable} from 'rxjs/index';
-import {Workshop} from './api/model/index';
-import {WorkshopFacade} from './workshop-state.facade';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/index';
+import { Workshop } from './api/model/index';
+import { WorkshopFacade } from './workshop-state.facade';
 
 interface Quote {
   author: string;
@@ -18,19 +18,18 @@ interface Quote {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   quotes: Quote[] = [
     {
       author: 'ngTalks',
-      text: 'New conference talk video on NgTalks channel. ' +
-      'Michael Hladky - Crafting solid state management - A principle-based architecture.',
+      text:
+        'New conference talk video on NgTalks channel. ' +
+        'Michael Hladky - Crafting solid state management - A principle-based architecture.',
       contextImage: 'https://lh3.google.com/u/0/d/1_9ISgf4Ovg-CJq5b6_3EXvntA0ResLtP=w1895-h889-iv2',
-      contextName: '@ngtalks_ua First ever #angular conference in Ukraine!',
+      contextName: '@ngtalks_ua First ever #angular conference in Ukraine!'
     },
     {
       author: 'siemens',
-      text: 'After the trainings we had confidence to start a large' +
-      ' scale app with RxJS.',
+      text: 'After the trainings we had confidence to start a large' + ' scale app with RxJS.',
       contextImage: 'https://www.koeln-kundendienst.de/wp-content/uploads/2016/10/Siemens-logo.png',
       contextName: 'siemens'
     },
@@ -48,5 +47,4 @@ export class AppComponent {
     this.wF.load();
     this.workshops$ = this.wF.getAll();
   }
-
 }

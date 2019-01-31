@@ -7,8 +7,7 @@ export const config = {
   packagedFolder: path.join(__base),
   debugMode: true,
   validPreset: 'angular',
-  ci: {validState: 'passed\r\n'},
+  ci: { validState: 'passed\r\n' },
   __base,
   validPreset: 'angular'
 };
-

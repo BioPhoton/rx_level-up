@@ -1,4 +1,3 @@
-
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MhMainNavComponent } from './mh-main-nav.component';
@@ -11,8 +10,7 @@ describe('MhMainNavComponent', () => {
     TestBed.configureTestingModule({
       imports: [MatSidenavModule],
       declarations: [MhMainNavComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MhMainNavComponent);
     component = fixture.componentInstance;
