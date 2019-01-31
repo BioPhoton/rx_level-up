@@ -1,5 +1,3 @@
-import { Location } from './location.model';
-
 export class Talk {
   id: string;
   locationId: string;

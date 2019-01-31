@@ -4,10 +4,10 @@ import { MatButtonModule, MatCardModule, MatGridListModule } from '@angular/mate
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ApiModule } from './api/api.module';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/layout.module';
-import { ApiModule } from './api/api.module';
 
 export const MATERIAL_MODULES = [LayoutModule, MatCardModule, MatButtonModule, MatGridListModule];
 

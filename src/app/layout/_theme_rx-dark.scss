@@ -7,7 +7,7 @@
 
   app-root {
     .color-filter.filter-primary-gradient {
-      background: linear-gradient(135deg,mat-color($primary, darker, 0.80), mat-color($primary, lighter, 0.30));
+      background: linear-gradient(135deg, mat-color($primary, darker, 0.80), mat-color($primary, lighter, 0.30));
     }
 
     .rx-header-background {
