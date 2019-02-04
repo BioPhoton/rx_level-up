@@ -1,3 +1,5 @@
+import { Routes } from '@angular/router';
 export interface GlobalOverlayModuleConfig {
-  outletName: string;
+  outletName?: string;
+  routes?: Routes;
 }
