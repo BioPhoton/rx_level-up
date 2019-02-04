@@ -1,3 +1,20 @@
+# [0.3.0](https://github.com/BioPhoton/rx_level-up/compare/0.2.0...0.3.0) (2019-02-04)
+
+### Bug Fixes
+
+- **global overlay:** fix typing ([470494b](https://github.com/BioPhoton/rx_level-up/commit/470494b))
+
+### Features
+
+- **global overlay:** implement a global overlay for the booking form ([915f94f](https://github.com/BioPhoton/rx_level-up/commit/915f94f)), closes [#6](https://github.com/BioPhoton/rx_level-up/issues/6)
+- **google-form-for-bookings:** start implement booking form ([2d0293a](https://github.com/BioPhoton/rx_level-up/commit/2d0293a)), closes [#7](https://github.com/BioPhoton/rx_level-up/issues/7)
+- **google-forms-for-booking:** implement google forms for booking form ([bce9eff](https://github.com/BioPhoton/rx_level-up/commit/bce9eff)), closes [#7](https://github.com/BioPhoton/rx_level-up/issues/7)
+- **setup prettier:** adopt tslint file ([2e4ea42](https://github.com/BioPhoton/rx_level-up/commit/2e4ea42)), closes [#4](https://github.com/BioPhoton/rx_level-up/issues/4)
+- **setup prettier:** first format ([93f19cd](https://github.com/BioPhoton/rx_level-up/commit/93f19cd))
+- **setup prettier:** formatting and import sorting ([f44f7aa](https://github.com/BioPhoton/rx_level-up/commit/f44f7aa))
+- **setup prettier:** setup linting rules for imports ([6d8ebd5](https://github.com/BioPhoton/rx_level-up/commit/6d8ebd5))
+- **setup prettier:** setup prettier ([5e6eb85](https://github.com/BioPhoton/rx_level-up/commit/5e6eb85))
+
 # [0.2.0](https://github.com/BioPhoton/rx_level-up/compare/0.1.0...0.2.0) (2019-01-31)
 
 ### Bug Fixes
