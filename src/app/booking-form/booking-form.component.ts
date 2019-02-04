@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { MsgBusService } from '../modules/overlay/services/msg-bus.service';
 
 @Component({
@@ -6,22 +6,39 @@ import { MsgBusService } from '../modules/overlay/services/msg-bus.service';
   templateUrl: './booking-form.component.html',
   styles: [
     `
-      :host {
-        width: 950px;
-      }
-
-      .booking-iframe-wrapper {
-        padding: 0px;
-      }
-
       .booking-iframe {
+        width: 500px;
+      }
+
+      .iframe-close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      .iframe-loading-spinner {
+        position: absolute !important;
+        right: calc(50% - 50px);
+        top: calc(50% - 50px);
+      }
+
+      .iframe-loading-spinner.mat-progress-spinner circle,
+      .iframe-loading-spinner.mat-spinner circle {
+        stroke: #fff;
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class BookingFormComponent {
+  iframeLoaded = false;
+
   constructor(private t: MsgBusService) {}
+
+  onLoad(e) {
+    this.iframeLoaded = e.returnValue;
+  }
 
   close() {
     this.t.commandsSubject.next(true);
