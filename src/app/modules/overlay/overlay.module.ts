@@ -1,32 +1,19 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { Route, Routes } from '@angular/router';
+import { Inject, ModuleWithProviders, NgModule } from '@angular/core';
+import { Route, Router, Routes } from '@angular/router';
 import { RouterDummyComponent } from './components/router-dummy/router-dummy.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { GlobalOverlayModuleConfig } from './interfaces/global-overlay-module-config.interface';
 import { GLOBAL_OVERLAY_CONFIG_TOKEN } from './tokens/global-overlay-module-config.token';
 
+export const DEFAULT_OUTLET_NAME = 'global-overlay';
 export const OVERLAY_ROUTE = {
   component: RouterDummyComponent,
   canActivate: [CanActivateGuard],
   canDeactivate: [CanDeactivateGuard]
 };
-
-function getPrepareRoutes(routes: Routes) {
-  return (
-    routes
-      // Replace component with dummy and apply component as route data
-      .map(r => ({
-        ...OVERLAY_ROUTE,
-        path: r.path,
-        data: {
-          portal: r.component
-        }
-      }))
-  );
-}
 
 @NgModule({
   declarations: [RouterDummyComponent],
@@ -35,10 +22,7 @@ function getPrepareRoutes(routes: Routes) {
   entryComponents: []
 })
 export class GlobalOverlayModule {
-  static outletName = '';
-
   static forRoot(config: GlobalOverlayModuleConfig): ModuleWithProviders {
-    GlobalOverlayModule.outletName = config.outletName || '';
     return {
       ngModule: GlobalOverlayModule,
       providers: [
@@ -50,14 +34,34 @@ export class GlobalOverlayModule {
     };
   }
 
-  static getRoute(routes: Routes): Route {
-    console.log('GlobalOverlayModule.outletName', GlobalOverlayModule.outletName);
+  constructor(
+    @Inject(GLOBAL_OVERLAY_CONFIG_TOKEN) private moduleConfig: GlobalOverlayModuleConfig,
+    private router: Router
+  ) {
+    if (moduleConfig.routes && moduleConfig.routes.length) {
+      this.router.config = [...this.router.config, this.getRoute(moduleConfig)];
+    }
+  }
+
+  getRoute(config: GlobalOverlayModuleConfig): Route {
     return {
-      outlet: GlobalOverlayModule.outletName,
+      outlet: config.outletName || DEFAULT_OUTLET_NAME,
       path: '',
-      children: getPrepareRoutes(routes)
+      children: this.getPrepareRoutes(config.routes)
     };
   }
 
-  constructor() {}
+  getPrepareRoutes(routes: Routes) {
+    return (
+      routes
+        // Replace component with dummy and apply component as route data
+        .map(r => ({
+          ...OVERLAY_ROUTE,
+          path: r.path,
+          data: {
+            portal: r.component
+          }
+        }))
+    );
+  }
 }

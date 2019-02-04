@@ -16,6 +16,7 @@ import { ApiModule } from './api/api.module';
 import { AppComponent } from './app.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { AppLayoutModule } from './layout/layout.module';
+import { GlobalOverlayModule } from './modules/overlay/overlay.module';
 
 export const MATERIAL_MODULES = [
   LayoutModule,
@@ -26,6 +27,16 @@ export const MATERIAL_MODULES = [
   MatProgressSpinnerModule
 ];
 
+export const OVERLAY__MODULE_CONFIG = {
+  outletName: 'global-overlay',
+  routes: [
+    {
+      path: 'booking',
+      component: BookingFormComponent
+    }
+  ]
+};
+
 @NgModule({
   declarations: [AppComponent, BookingFormComponent],
   imports: [
@@ -35,6 +46,7 @@ export const MATERIAL_MODULES = [
     FontAwesomeModule,
     AppLayoutModule,
     ApiModule,
+    GlobalOverlayModule.forRoot(OVERLAY__MODULE_CONFIG),
     RouterModule.forRoot(
       [
         {

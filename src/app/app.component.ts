@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/index';
 import { Workshop } from './api/model/index';
+import { GlobalOverlayService } from './modules/overlay/services/global-overlay.service';
 import { WorkshopFacade } from './workshop-state.facade';
-import { GlobalOverlayService } from './global-overlay.service';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 interface Quote {
   author: string;
@@ -49,7 +50,11 @@ export class AppComponent {
     this.workshops$ = this.wF.getAll();
   }
 
-  openBookingForm() {
-    this.goS.open();
+  openByClass() {
+    this.goS.open(BookingFormComponent);
+  }
+
+  openByPath() {
+    this.goS.openViaNavigation('booking');
   }
 }

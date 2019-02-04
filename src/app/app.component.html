@@ -9,6 +9,7 @@
       <div class="r">
         <div class="rx-header-headline filter-content">
           <img class="full-width-img" src="assets/images/RxJS-logo.png" style="width: 230px; float: right;" />
+
           <h1>
             Rx Level Up
           </h1>
@@ -17,13 +18,20 @@
             Workshops for every level to master RxJS in your applications.
           </p>
 
-          <button mat-raised-button color="secondary" (click)="openBookingForm()">
-            Book in-house
+          <button mat-raised-button color="secondary" (click)="openByClass()">
+            Open by class
+          </button>
+          <button mat-raised-button color="secondary" [routerLink]="[{ outlets: { 'global-overlay': ['booking'] } }]">
+            Open by navigation
+          </button>
+          <button mat-raised-button color="secondary" (click)="openByPath()">
+            Open by path
           </button>
         </div>
       </div>
     </header>
     <section class="rx-content content-row r">
+      <router-outlet name="global-overlay"></router-outlet>
       <mat-card>
         <mat-card-content>
           <h4 class="description text-center">
@@ -47,7 +55,7 @@
         </mat-card-content>
         <div class="card-background background-dark">
           <mat-grid-list cols="2" rowHeight="380">
-            <mat-grid-tile *ngFor="let workshop of workshops">
+            <mat-grid-tile *ngFor="let workshop of (workshops$ | async)">
               <mat-card class="flat-mat-card col-mat-card">
                 <img mat-card-image alt="{{ workshop.title }}" [src]="workshop.coverImage" />
                 <mat-card-actions>
