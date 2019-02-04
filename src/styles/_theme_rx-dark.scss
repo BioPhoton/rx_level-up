@@ -67,7 +67,7 @@ $mat-rx-pink: (
 );
 
 $rx-primary: mat-palette($mat-rx-purple);
-$rx-accent:  mat-palette($mat-rx-pink, A200, A100, A400);
-$rx-warn:    mat-palette($mat-red);
+$rx-accent: mat-palette($mat-rx-pink, A200, A100, A400);
+$rx-warn: mat-palette($mat-red);
 
 $rx-theme: mat-light-theme($rx-primary, $rx-accent, $rx-warn);

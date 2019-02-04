@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/index';
 import { Workshop } from './api/model/index';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 import { GlobalOverlayService } from './modules/overlay/services/global-overlay.service';
 import { WorkshopFacade } from './workshop-state.facade';
-import { BookingFormComponent } from './booking-form/booking-form.component';
 
 interface Quote {
   author: string;

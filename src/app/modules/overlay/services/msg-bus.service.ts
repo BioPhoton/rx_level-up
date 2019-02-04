@@ -7,6 +7,4 @@ import { Subject } from 'rxjs/index';
 export class MsgBusService {
   commandsSubject = new Subject<boolean>();
   commands$ = this.commandsSubject.asObservable();
-
-  constructor() {}
 }

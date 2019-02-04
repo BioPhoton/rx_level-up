@@ -58,9 +58,6 @@ export class GlobalOverlayService implements OnDestroy {
     this.overlayRef.detach();
   }
 
-  // Open overlay if:
-  // - navigate directly to the url
-  // - call openViaNavigation
   openViaNavigation<T>(path: string = '') {
     this.router.navigate([
       {
@@ -71,9 +68,6 @@ export class GlobalOverlayService implements OnDestroy {
     ]);
   }
 
-  // Close overlay if:
-  // - trigger any navigation outside of outlet
-  // - call closeViaNavigation
   closeViaNavigation<T>() {
     this.router.navigate([
       {
