@@ -3,6 +3,7 @@
 git config --global credential.helper wincred
 
 node modules to install globally:
+
 - @types/node
 - conventional-changelog-angular
 - conventional-changelog
@@ -11,13 +12,13 @@ node modules to install globally:
 - conventional-github-releaser
 - conventional-recommended-bump
 - semver
-- ts-node 
+- ts-node
 - typescript
 - git-describe
 - winston
 
-
 # Process
+
 1. bump version of the libs `package.json`
 2. rebuild package with new version `npm run build`
 3. npm run changelog
@@ -27,4 +28,3 @@ node modules to install globally:
 7. git push --follow-tags
 8. npm run github-release
 9. npm run release:lib
-

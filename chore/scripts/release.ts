@@ -1,19 +1,7 @@
-import {config} from '../config';
-import {
-  backupPackageJson,
-  changelog,
-  createVersionFile,
-  releaseCommit,
-  releaseGitHub
-} from './tasks/index';
-import {deleteBackupPackageJson} from './tasks/package-backups';
-import {
-  exec,
-  getBump,
-  getCommitConvention,
-  getPackageVersion,
-  logger
-} from './utils';
+import { config } from '../config';
+import { backupPackageJson, changelog, createVersionFile, releaseCommit, releaseGitHub } from './tasks/index';
+import { deleteBackupPackageJson } from './tasks/package-backups';
+import { exec, getBump, getCommitConvention, getPackageVersion, logger } from './utils';
 
 logger.mp(`[S] Automated Release`);
 
@@ -34,11 +22,10 @@ backupPackageJson()
   // build lib
   .then(() => {
     logger.sp(`[S] Build Project`);
-    return exec('npm run build')
-      .then(() => {
-        logger.sp(`[E] Build Project`);
-        return Promise.resolve();
-      });
+    return exec('npm run build').then(() => {
+      logger.sp(`[E] Build Project`);
+      return Promise.resolve();
+    });
   })
   // create changelog based onn new version
   .then(() => changelog(state.preset, state.version))
@@ -55,8 +42,7 @@ backupPackageJson()
     logger.mp(`[E] Automated Release`);
   })
   // if any of the above fails catch error and log it
-  .catch((err) => logger.error(`[X] Automated Release`));
-
+  .catch(err => logger.error(`[X] Automated Release`));
 
 function resolvePreconditions() {
   logger.sp(`[S] Resolve preconditions`);
@@ -67,21 +53,19 @@ function resolvePreconditions() {
       state.preset = preset;
       return Promise.resolve(preset);
     })
-    .then(preset => getBump(preset)
-      .then(bump => {
+    .then(preset =>
+      getBump(preset).then(bump => {
         state.bump = bump;
         return Promise.resolve(bump);
       })
     )
     .then(bump => {
-      return exec('npm --no-git-tag-version version ' + bump, {cwd: config.libPath})
-        .then(() => {
-          getPackageVersion()
-            .then(version => {
-              state.version = version;
-              return Promise.resolve(version);
-            });
+      return exec('npm --no-git-tag-version version ' + bump, { cwd: config.libPath }).then(() => {
+        getPackageVersion().then(version => {
+          state.version = version;
+          return Promise.resolve(version);
         });
+      });
     })
-    .catch((e) => logger.error(`[X] Resolve preconditions`, e));
+    .catch(e => logger.error(`[X] Resolve preconditions`, e));
 }

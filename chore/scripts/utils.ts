@@ -1,8 +1,8 @@
-import {createReadStream, createWriteStream, existsSync, mkdirSync} from 'fs';
-import {dirname, join} from 'path';
+import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
+import { dirname, join } from 'path';
 import util from 'util';
-import {addColors, createLogger, format, transports} from 'winston';
-import {config} from '../config';
+import { addColors, createLogger, format, transports } from 'winston';
+import { config } from '../config';
 
 interface TransformableInfo {
   level: string;
@@ -13,15 +13,13 @@ interface TransformableInfo {
 export const exec = util.promisify(require('child_process').exec);
 
 export function deleteFile(source): Promise<boolean> {
-  return exec('rimraf ' + source, {cwd: config.__base})
-    .catch((err) => {
-      logger.error(`Remove files error: ${err}`);
-    });
+  return exec('rimraf ' + source, { cwd: config.__base }).catch(err => {
+    logger.error(`Remove files error: ${err}`);
+  });
 }
 
 export function copyFile(source, target, cb = null): Promise<boolean | string> {
   return new Promise((resolve, reject) => {
-
     const getDirname = dirname;
 
     function ensureDirectoryExistence(filePath) {
@@ -35,7 +33,7 @@ export function copyFile(source, target, cb = null): Promise<boolean | string> {
     }
 
     const rd = createReadStream(source);
-    rd.on('error', (err) => {
+    rd.on('error', err => {
       reject(err);
     });
 
@@ -43,14 +41,13 @@ export function copyFile(source, target, cb = null): Promise<boolean | string> {
 
     const wr = createWriteStream(target);
 
-    wr.on('error', (err) => {
+    wr.on('error', err => {
       reject(err);
     });
-    wr.on('close', (ex) => {
+    wr.on('close', ex => {
       resolve(true);
     });
     rd.pipe(wr);
-
   });
 }
 /*
@@ -80,40 +77,38 @@ export function getCommitConvention(base = config.__base): Promise<string> {
   logger.fn(`[S] Detect commit convention`);
   // Detect what commit message convention your repository is using
   // source: https://github.com/conventional-changelog/conventional-commits-detector/blob/master/README.md
-  return exec('conventional-commits-detector', {cwd: base})
-    .then((presetRes) => {
-      if (!presetRes.stdout || presetRes.stderr) {
-        logger.error(`[X] Detect commit convention`);
-        return Promise.reject(presetRes.stderr || false);
-      } else {
-        const commitConvention = presetRes.stdout.split('\n')[0];
-        logger.fn(`[E] Detect commit convention`);
-        return Promise.resolve(commitConvention);
-      }
-    });
+  return exec('conventional-commits-detector', { cwd: base }).then(presetRes => {
+    if (!presetRes.stdout || presetRes.stderr) {
+      logger.error(`[X] Detect commit convention`);
+      return Promise.reject(presetRes.stderr || false);
+    } else {
+      const commitConvention = presetRes.stdout.split('\n')[0];
+      logger.fn(`[E] Detect commit convention`);
+      return Promise.resolve(commitConvention);
+    }
+  });
 }
 
 export function getBump(preset = 'angular'): Promise<string> {
   logger.fn(`[S] Detect recommended bump`);
-  return Promise.resolve()
-    .then(() => {
-      // Detect the recommended bump type by the conventional-commit standard
-      // source: https://github.com/conventional-changelog-archived-repos/conventional-recommended-bump/blob/master/README.md
-      return exec(`conventional-recommended-bump -p ${preset}`, {cwd: config.__base})
-        .then((bumpRes) => {
-          if (!bumpRes.stdout || bumpRes.stderr) {
-            logger.error(`[X] Detect recommended bump`);
-            return Promise.reject(bumpRes.stderr || false);
-          } else {
-            const bump = bumpRes.stdout.split('\n')[0];
-            logger.fn(`[E] Detect recommended bump`);
-            return Promise.resolve(bump);
-          }
-        })
-        .catch((e) => {
-          logger.error(`[X] Detect recommended bump catch`);
-        });
-    });
+  return Promise.resolve().then(() => {
+    // Detect the recommended bump type by the conventional-commit standard
+    // source: https://github.com/conventional-changelog-archived-repos/conventional-recommended-bump/blob/master/README.md
+    return exec(`conventional-recommended-bump -p ${preset}`, { cwd: config.__base })
+      .then(bumpRes => {
+        if (!bumpRes.stdout || bumpRes.stderr) {
+          logger.error(`[X] Detect recommended bump`);
+          return Promise.reject(bumpRes.stderr || false);
+        } else {
+          const bump = bumpRes.stdout.split('\n')[0];
+          logger.fn(`[E] Detect recommended bump`);
+          return Promise.resolve(bump);
+        }
+      })
+      .catch(e => {
+        logger.error(`[X] Detect recommended bump catch`);
+      });
+  });
 }
 
 export function getPackageVersion(): Promise<string> {
@@ -150,23 +145,25 @@ const loggerConfig = {
 
 addColors(loggerConfig.colors);
 
-export const logger: {
-  error: () => void,
-  debug: () => void,
-  warn: () => void,
-  data: () => void,
-  info: () => void,
-  mp: () => void,
-  sp: () => void,
-  fn: () => void
-} | any = createLogger({
+export const logger:
+  | {
+      error: () => void;
+      debug: () => void;
+      warn: () => void;
+      data: () => void;
+      info: () => void;
+      mp: () => void;
+      sp: () => void;
+      fn: () => void;
+    }
+  | any = createLogger({
   level: 'sp',
   levels: loggerConfig.levels,
   transports: [
     // - Write all logs error (and below) to `error.log`.
-    new transports.File({filename: 'CI-error.log', level: 'data'}),
+    new transports.File({ filename: 'CI-error.log', level: 'data' }),
     // - Write to all logs with level `info` and below to `combined.log`
-    new transports.File({filename: 'CI-combined.log'})
+    new transports.File({ filename: 'CI-combined.log' })
   ]
 } as any);
 
@@ -176,10 +173,6 @@ export const logger: {
 //
 if (process.env.NODE_ENV !== 'production') {
   logger.add(new transports.Console({
-    format: format.combine(
-      format.colorize(),
-      format.simple(),
-      format.json()
-    )
+    format: format.combine(format.colorize(), format.simple(), format.json())
   }) as any);
 }

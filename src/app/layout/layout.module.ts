@@ -1,22 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MhMainNavComponent} from './mh-main-nav/mh-main-nav.component';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MhMainNavComponent } from './mh-main-nav/mh-main-nav.component';
 
 const COMPONENTS = [MhMainNavComponent];
 const DECLARATIONS = [COMPONENTS];
 const EXPORTS = [COMPONENTS];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
-  ],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule],
   declarations: [DECLARATIONS],
   exports: [EXPORTS]
 })
-export class AppLayoutModule { }
+export class AppLayoutModule {}

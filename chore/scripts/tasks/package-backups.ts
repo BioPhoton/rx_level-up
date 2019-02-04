@@ -1,6 +1,6 @@
-import {join} from 'path';
-import {config} from '../../config';
-import {copyFile, deleteFile, logger} from '../utils';
+import { join } from 'path';
+import { config } from '../../config';
+import { copyFile, deleteFile, logger } from '../utils';
 
 export function backupPackageJson(): Promise<boolean> {
   logger.fn(`[S] Backup package.json & package-lock.json`);
@@ -42,7 +42,8 @@ export function deleteBackupPackageJson(): Promise<boolean> {
   const source1 = join(config.libPath, '_package.json');
   const source2 = join(config.libPath, '_package-lock.json');
 
-  return deleteFile(source1).then(() => deleteFile(source2))
+  return deleteFile(source1)
+    .then(() => deleteFile(source2))
     .then(() => {
       logger.fn(`[E] Delete backup package.json & package-lock.json`);
       return Promise.resolve(true);

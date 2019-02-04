@@ -1,11 +1,9 @@
-import {exec, logger} from '../utils';
-
+import { exec, logger } from '../utils';
 
 // release on git
 export function releaseGitHub(preset: string): Promise<boolean> {
-
-// Make a new GitHub release from git metadata based on your commit-convention. In this case angular convention
-// source: https://github.com/conventional-changelog/conventional-github-releaser/blob/master/README.md
+  // Make a new GitHub release from git metadata based on your commit-convention. In this case angular convention
+  // source: https://github.com/conventional-changelog/conventional-github-releaser/blob/master/README.md
 
   logger.sp('[S] GitHub release');
   return new Promise((resolve, reject) => {
