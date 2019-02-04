@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MsgBusService } from '../modules/overlay/services/msg-bus.service';
 
 @Component({
   selector: 'mh-booking-form',
@@ -8,12 +9,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       :host {
         width: 950px;
       }
+
+      .booking-iframe-wrapper {
+        padding: 0px;
+      }
+
+      .booking-iframe {
+      }
     `
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookingFormComponent {
-  constructor() {}
+  constructor(private t: MsgBusService) {}
 
-  onSubmit() {}
+  close() {
+    this.t.commandsSubject.next(true);
+  }
 }
