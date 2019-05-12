@@ -24,11 +24,6 @@ export class GlobalOverlayService implements OnDestroy {
     private msgS: MsgBusService
   ) {
     this.overlayRef = this.createOverlayRef();
-
-    // @TODO find better way to communicate from portal to service
-    this.msgS.commands$.subscribe(n => {
-      this.close();
-    });
   }
 
   private createOverlayRef(): OverlayRef {
@@ -41,13 +36,9 @@ export class GlobalOverlayService implements OnDestroy {
     ref
       .backdropClick()
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe(n => this.close());
+      .subscribe(n => this.msgS.commandsSubject.next(true));
 
     return ref;
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroySubject.next(true);
   }
 
   open<T>(classRef) {
@@ -58,23 +49,7 @@ export class GlobalOverlayService implements OnDestroy {
     this.overlayRef.detach();
   }
 
-  openViaNavigation<T>(path: string = '') {
-    this.router.navigate([
-      {
-        outlets: {
-          [this.goC.outletName]: [path]
-        }
-      }
-    ]);
-  }
-
-  closeViaNavigation<T>() {
-    this.router.navigate([
-      {
-        outlets: {
-          [this.goC.outletName]: null
-        }
-      }
-    ]);
+  ngOnDestroy(): void {
+    this.onDestroySubject.next(true);
   }
 }
