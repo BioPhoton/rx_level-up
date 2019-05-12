@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/BioPhoton/rx_level-up/compare/0.3.0...0.3.1) (2019-05-12)
+
+### Bug Fixes
+
+- **folder structure:** structure components folders ([52b3b92](https://github.com/BioPhoton/rx_level-up/commit/52b3b92))
+- **folder structure:** structure components folders ([3a48fcc](https://github.com/BioPhoton/rx_level-up/commit/3a48fcc))
+
 # [0.3.0](https://github.com/BioPhoton/rx_level-up/compare/0.2.0...0.3.0) (2019-02-04)
 
 ### Bug Fixes
