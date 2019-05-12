@@ -36,10 +36,6 @@ export class GlobalOverlayNavigationService implements OnDestroy {
     this.openViaNavigation(this.getPathByClassRef(classRef));
   }
 
-  openViaNavigationByClassRef(classRef) {
-    this.openViaNavigation(this.getPathByClassRef(classRef));
-  }
-
   openViaNavigation<T>(path: string = '') {
     this.router.navigate([
       {

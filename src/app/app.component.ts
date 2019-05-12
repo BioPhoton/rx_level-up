@@ -43,7 +43,6 @@ export class AppComponent {
       contextName: 'continental'
     }
   ];
-
   workshops$: Observable<Workshop[]>;
 
   constructor(private wF: WorkshopFacade) {
