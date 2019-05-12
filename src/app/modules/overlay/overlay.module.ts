@@ -6,6 +6,7 @@ import { RouterDummyComponent } from './components/router-dummy/router-dummy.com
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { GlobalOverlayModuleConfig } from './interfaces/global-overlay-module-config.interface';
+import { GlobalOverlayNavigationService } from './services/global-overlay.navigation.service';
 import { GLOBAL_OVERLAY_CONFIG_TOKEN } from './tokens/global-overlay-module-config.token';
 
 export const DEFAULT_OUTLET_NAME = 'global-overlay';
@@ -36,11 +37,13 @@ export class GlobalOverlayModule {
 
   constructor(
     @Inject(GLOBAL_OVERLAY_CONFIG_TOKEN) private moduleConfig: GlobalOverlayModuleConfig,
-    private router: Router
+    private router: Router,
+    private goNS: GlobalOverlayNavigationService
   ) {
     if (moduleConfig.routes && moduleConfig.routes.length) {
       this.router.config = [...this.router.config, this.getRoute(moduleConfig)];
     }
+    this.goNS.init();
   }
 
   getRoute(config: GlobalOverlayModuleConfig): Route {

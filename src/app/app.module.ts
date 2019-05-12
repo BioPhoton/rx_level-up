@@ -14,7 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ApiModule } from './api/api.module';
 
 import { AppComponent } from './app.component';
-import { BookingFormComponent } from './booking-form/booking-form.component';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
 import { AppLayoutModule } from './layout/layout.module';
 import { GlobalOverlayModule } from './modules/overlay/overlay.module';
 

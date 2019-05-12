@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/index';
+import { Observable } from 'rxjs';
 import { Workshop } from './api/model/index';
-import { BookingFormComponent } from './booking-form/booking-form.component';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
+import { GlobalOverlayNavigationService } from './modules/overlay/services/global-overlay.navigation.service';
 import { GlobalOverlayService } from './modules/overlay/services/global-overlay.service';
 import { WorkshopFacade } from './workshop-state.facade';
 
@@ -42,19 +43,10 @@ export class AppComponent {
       contextName: 'continental'
     }
   ];
-
   workshops$: Observable<Workshop[]>;
 
-  constructor(private wF: WorkshopFacade, private goS: GlobalOverlayService) {
+  constructor(private wF: WorkshopFacade) {
     this.wF.load();
     this.workshops$ = this.wF.getAll();
-  }
-
-  openByClass() {
-    this.goS.open(BookingFormComponent);
-  }
-
-  openByPath() {
-    this.goS.openViaNavigation('booking');
   }
 }

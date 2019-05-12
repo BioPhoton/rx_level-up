@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { MsgBusService } from '../modules/overlay/services/msg-bus.service';
+import { MsgBusService } from '../../modules/overlay/services/msg-bus.service';
 
 @Component({
   selector: 'mh-booking-form',
